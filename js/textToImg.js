@@ -95,9 +95,7 @@ const inputText = document.getElementById("input");
 const genBtn = document.getElementById("gen-btn");
 const imageContainer = document.getElementById("image-container");
 
-/* 
-		"https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
-*/
+
 
 async function query(input) {
   try {
@@ -282,5 +280,16 @@ window.addEventListener("load", async () => {
   } catch (error) {
     console.error("Error generating initial random images:", error);
     alert("Error generating initial random images: " + error.message);
+  }
+});
+
+// Add event listener to input field for 'keypress' event
+inputText.addEventListener('keypress', function(e) {
+  // Check if Enter key is pressed (key code 13)
+  if (e.key === 'Enter') {
+      // Prevent default behavior of the Enter key (form submission)
+      e.preventDefault();
+      // Trigger a click event on the Generate Images button
+      genBtn.click();
   }
 });
